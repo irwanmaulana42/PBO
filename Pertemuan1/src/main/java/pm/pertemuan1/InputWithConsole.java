@@ -8,24 +8,13 @@ import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author PRISMA
  */
 public class InputWithConsole {
-
-    public static void main(String[] args) {
-        try {
-            InputWithConsole console = new InputWithConsole();
-            console.console();
-        } catch (IOException ex) {
-            Logger.getLogger(InputWithConsole.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+    
     public void console() throws IOException {
         String myCampus, myName, joinCampus, nim;
 

@@ -17,13 +17,23 @@ import java.util.logging.Logger;
  */
 public class InputWithConsole {
 
-    public void console() throws IOException{
+    public static void main(String[] args) {
+        try {
+            InputWithConsole console = new InputWithConsole();
+            console.console();
+        } catch (IOException ex) {
+            Logger.getLogger(InputWithConsole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void console() throws IOException {
         String myCampus, myName, joinCampus, nim;
 
         Console inputc = System.console();
         System.out.println("======================================");
         if (inputc == null) {
             try {
+                System.out.println("With Buffered Reader");
                 InputStreamReader isr = new InputStreamReader(System.in);
                 BufferedReader inputB = new BufferedReader(isr);
                 BufferedReader input = inputB;
@@ -47,6 +57,7 @@ public class InputWithConsole {
             }
 
         } else {
+            System.out.println("With System Console");
             Console input = inputc;
             System.out.println("Tampilan input data");
             System.out.print("Masukkan nama Kampus: ");

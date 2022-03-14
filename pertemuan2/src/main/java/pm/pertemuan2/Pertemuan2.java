@@ -18,12 +18,12 @@ public class Pertemuan2 {
         pm2.display();
     }
 
-    public void setPanjang() {
-        this.panjang = Float.parseFloat(JOptionPane.showInputDialog(null, "Masukkan Panjang: "));
+    public void setPanjang(float panjang) {
+        this.panjang = panjang;
     }
 
-    public void setLebar() {
-        this.lebar = Float.parseFloat(JOptionPane.showInputDialog(null, "Masukkan Lebar: "));
+    public void setLebar(float lebar) {
+        this.lebar = lebar;
     }
 
     public float getPanjang() {
@@ -45,8 +45,10 @@ public class Pertemuan2 {
     }
 
     public void display() {
-        this.setPanjang();
-        this.setLebar();
+        Float insertPanjang = Float.parseFloat(JOptionPane.showInputDialog(null, "Masukkan Panjang: "));
+        Float insertLebar = Float.parseFloat(JOptionPane.showInputDialog(null, "Masukkan Lebar: "));
+        this.setPanjang(insertPanjang);
+        this.setLebar(insertLebar);
         this.sum();
     }
 

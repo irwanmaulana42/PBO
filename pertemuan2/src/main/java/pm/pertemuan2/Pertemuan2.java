@@ -37,7 +37,8 @@ public class Pertemuan2 {
     public void sum() {
         Float sum = (this.getPanjang() * this.getLebar());
         JOptionPane.showMessageDialog(null, ""
-                + "Panjang: " + this.getPanjang()
+                + "LUAS PERSEGI PANJANG"
+                + "\nPanjang: " + this.getPanjang()
                 + "\n Lebar: " + this.getLebar()
                 + "\n Rumus: panjang x lebar "
                 + "\n Hasil: "

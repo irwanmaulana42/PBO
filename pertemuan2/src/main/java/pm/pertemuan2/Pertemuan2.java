@@ -46,6 +46,7 @@ public class Pertemuan2 {
     }
 
     public void display() {
+//        JOptionPane.showInputDialog(null, "Masukkan Panjang");
         Float insertPanjang = Float.parseFloat(JOptionPane.showInputDialog(null, "Masukkan Panjang: "));
         Float insertLebar = Float.parseFloat(JOptionPane.showInputDialog(null, "Masukkan Lebar: "));
         this.setPanjang(insertPanjang);

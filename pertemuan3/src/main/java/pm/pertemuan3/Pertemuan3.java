@@ -56,6 +56,7 @@ public class Pertemuan3 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -66,6 +67,8 @@ public class Pertemuan3 extends javax.swing.JFrame {
         buttonHitung = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         sumVolume = new javax.swing.JLabel();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,8 +131,8 @@ public class Pertemuan3 extends javax.swing.JFrame {
                     .addComponent(textTinggi, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textPanjang, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textLebar, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonHitung)
-                    .addComponent(sumVolume))
+                    .addComponent(sumVolume)
+                    .addComponent(buttonHitung))
                 .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,7 +182,12 @@ public class Pertemuan3 extends javax.swing.JFrame {
         if(!inputTinggi.isEmpty() && isNumeric(inputTinggi)){
             this.setTinggi(Integer.parseInt(inputTinggi));
         }else{
-            textTinggi.setText("");
+            if(inputTinggi.isEmpty()){
+                textTinggi.setText("");
+                this.setTinggi(0);
+            }else{
+                textTinggi.setText(Integer.toString(this.getTinggi()));
+            }
         }
     }//GEN-LAST:event_textTinggiKeyReleased
 
@@ -190,7 +198,12 @@ public class Pertemuan3 extends javax.swing.JFrame {
             System.out.println("Lebar: " + inputLebar);
             this.setLebar(Integer.parseInt(inputLebar));   
         }else{
-            textLebar.setText("");
+            if(inputLebar.isEmpty()){
+                textLebar.setText("");
+                this.setLebar(0);
+            }else{
+                textLebar.setText(Integer.toString(this.getLebar()));   
+            }
         }
     }//GEN-LAST:event_textLebarKeyReleased
 
@@ -201,7 +214,12 @@ public class Pertemuan3 extends javax.swing.JFrame {
             System.out.println("Panjang: " + inputPanjang);
             this.setPanjang(Integer.parseInt(inputPanjang));
         }else{
-            textPanjang.setText("");
+            if(inputPanjang.isEmpty()){
+                textPanjang.setText("");
+                this.setPanjang(0);
+            }else{
+                textPanjang.setText(Integer.toString(this.getPanjang()));   
+            }
         }
     }//GEN-LAST:event_textPanjangKeyReleased
     
@@ -255,6 +273,7 @@ public class Pertemuan3 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel sumVolume;
     private javax.swing.JTextField textLebar;
     private javax.swing.JTextField textPanjang;

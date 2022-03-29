@@ -27,8 +27,7 @@ public class ControllerMahasiswa {
 
     public DefaultTableModel showData() {
         String[] kolom = {"NIM","Nama","Tinggi","Pindahan"};
-        Object[][] objData = new Object[listData.size()][4]; // 3 merupakan jumlah kolom
-        System.out.println("SIZE: " + listData.size());
+        Object[][] objData = new Object[listData.size()][4];
         int i = 0;
         
         for(ModelMahasiswa n : listData){

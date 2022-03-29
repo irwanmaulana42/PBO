@@ -14,12 +14,7 @@ public class ModelMahasiswa {
     private int tinggi;
     private boolean pindahan;
 
-    public ModelMahasiswa(){
-        
-    }
-
     public ModelMahasiswa(String nim, String nama, int tinggi, boolean pindahan){
-//        this(nim, nama, tinggi, pindahan);
         this.nim = nim;
         this.nama = nama;
         this.tinggi = tinggi;

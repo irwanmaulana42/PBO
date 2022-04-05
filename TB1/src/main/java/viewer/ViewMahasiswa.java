@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import model.Mahasiwa;
 import controller.MahasiwaJpaController;
+import controller.exceptions.NonexistentEntityException;
+import java.awt.HeadlessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -54,7 +56,7 @@ public class ViewMahasiswa extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnInput = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableList = new javax.swing.JTable();
 
@@ -98,10 +100,10 @@ public class ViewMahasiswa extends javax.swing.JFrame {
             }
         });
 
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
+                btnClearActionPerformed(evt);
             }
         });
 
@@ -116,20 +118,21 @@ public class ViewMahasiswa extends javax.swing.JFrame {
                 "NRP", "Nama", "Angkatan", "Sekolah SMA Asal"
             }
         ));
+        tableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(198, 198, 198))
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -138,19 +141,24 @@ public class ViewMahasiswa extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textFieldNama)
+                            .addComponent(textFieldAngkatan)
+                            .addComponent(textFieldSchool)
+                            .addComponent(textFieldNRP, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
                                 .addComponent(btnInput)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnUpdate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnDelete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSave))
-                            .addComponent(textFieldNRP)
-                            .addComponent(textFieldNama)
-                            .addComponent(textFieldAngkatan)
-                            .addComponent(textFieldSchool))))
+                                .addComponent(btnClear)))))
                 .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(292, 292, 292))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +186,7 @@ public class ViewMahasiswa extends javax.swing.JFrame {
                     .addComponent(btnDelete)
                     .addComponent(btnInput)
                     .addComponent(btnUpdate)
-                    .addComponent(btnSave))
+                    .addComponent(btnClear))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -189,6 +197,21 @@ public class ViewMahasiswa extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        String nrp = textFieldNRP.getText();
+        
+        try {
+            if(!nrp.isEmpty()){
+                jpa.destroy(nrp);
+                JOptionPane.showMessageDialog(null, "Data berhasil di hapus");
+                resetForm();
+                showTables();
+            }else{
+                JOptionPane.showMessageDialog(null, "Harap pilih data yang ingin di hapus");
+            }
+        } catch (NonexistentEntityException | HeadlessException ex) {
+            Logger.getLogger(ex.getMessage()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputActionPerformed
@@ -210,23 +233,62 @@ public class ViewMahasiswa extends javax.swing.JFrame {
             showTables();
         } catch (Exception ex) {
             Logger.getLogger(ex.getMessage()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-
     }//GEN-LAST:event_btnInputActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+                // TODO add your handling code here:        
+        String nrp = textFieldNRP.getText();
+        String nama = textFieldNama.getText();
+        int angkatan = Integer.parseInt(textFieldAngkatan.getText());
+        String sekolah_asal = textFieldSchool.getText();
+
+        record.setNrp(nrp);
+        record.setNama(nama);
+        record.setAngkatan(angkatan);
+        record.setSekolahAsal(sekolah_asal);
+
+        try {
+            jpa.edit(record);
+            JOptionPane.showMessageDialog(null, "Data berhasil di update");
+            resetForm();
+            showTables();
+        } catch (Exception ex) {
+            Logger.getLogger(ex.getMessage()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaveActionPerformed
+        resetForm();
+    }//GEN-LAST:event_btnClearActionPerformed
 
     private void textFieldNRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNRPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldNRPActionPerformed
+
+    private void tableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListMouseClicked
+        // TODO add your handling code here:
+        int column = 0;
+        int row = tableList.getSelectedRow();
+        String value = tableList.getModel().getValueAt(row, column).toString();
+        System.out.println("SELECTED ROW: " + value);
+        Mahasiwa mhs = jpa.findMahasiwa(value);
+
+        btnInput.setEnabled(false);
+        textFieldNRP.setEditable(false);
+        textFieldNRP.setText(mhs.getNrp());
+        textFieldNama.setText(mhs.getNama());
+        textFieldAngkatan.setText(Integer.toString(mhs.getAngkatan()));
+        textFieldSchool.setText(mhs.getSekolahAsal());
+    }//GEN-LAST:event_tableListMouseClicked
     
     private void resetForm(){
+        btnInput.setEnabled(true);
+        textFieldNRP.setEditable(true);
         textFieldNRP.setText("");
         textFieldNama.setText("");
         textFieldAngkatan.setText("");
@@ -289,9 +351,9 @@ public class ViewMahasiswa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInput;
-    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

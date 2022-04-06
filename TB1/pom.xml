@@ -57,6 +57,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <exec.mainClass>pm.tb1.TB1</exec.mainClass>
+        <exec.mainClass>viewer.ViewMahasiswa</exec.mainClass>
     </properties>
 </project>

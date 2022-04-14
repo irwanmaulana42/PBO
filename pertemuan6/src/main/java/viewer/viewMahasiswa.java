@@ -9,7 +9,6 @@ import controller.FakultasJpaController;
 import controller.MahasiswaJpaController;
 import controller.exceptions.NonexistentEntityException;
 import java.awt.HeadlessException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -250,8 +249,6 @@ public class viewMahasiswa extends javax.swing.JFrame {
             int angkatan = Integer.parseInt(txtAngkatan.getText());
             String[] fakultas = cbFakultas.getSelectedItem().toString().split("-");
             String[] dosen = cbDosen.getSelectedItem().toString().split("-");
-            Object asd = cbDosen.getSelectedItem();
-            System.out.println(asd);
             recordMhs.setNrp(nrp);
             recordMhs.setNama(nama);
             recordMhs.setAngkatan(angkatan);
@@ -274,8 +271,6 @@ public class viewMahasiswa extends javax.swing.JFrame {
             int angkatan = Integer.parseInt(txtAngkatan.getText());
             String[] fakultas = cbFakultas.getSelectedItem().toString().split("-");
             String[] dosen = cbDosen.getSelectedItem().toString().split("-");
-            Object asd = cbDosen.getSelectedItem();
-            System.out.println(asd);
             recordMhs.setNrp(nrp);
             recordMhs.setNama(nama);
             recordMhs.setAngkatan(angkatan);

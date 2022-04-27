@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/G:/My%20Drive/UMB/2021-2022%20Gasal/F061700009%20PEMROGRAMAN%20BERORIENTASI%20OBJECT%20(LAB)-20210827T023422Z-001/Source%20Code/Pertemuan-5/Tm7a/src/viewer/Tm7a.java</file>
-            <file>file:/G:/My%20Drive/UMB/2021-2022%20Gasal/F061700009%20PEMROGRAMAN%20BERORIENTASI%20OBJECT%20(LAB)-20210827T023422Z-001/Source%20Code/Pertemuan-5/Tm7a/src/model/Perpustakaan.java</file>
-            <file>file:/G:/My%20Drive/UMB/2021-2022%20Gasal/F061700009%20PEMROGRAMAN%20BERORIENTASI%20OBJECT%20(LAB)-20210827T023422Z-001/Source%20Code/Pertemuan-5/Tm7a/src/META-INF/persistence.xml</file>
+            <file>file:/C:/Users/PRISMA/Documents/NetBeansProjects/PBO/pertemuan7/src/controller/PerpustakaanJpaController.java</file>
+            <file>file:/C:/Users/PRISMA/Documents/NetBeansProjects/PBO/pertemuan7/src/model/Perpustakaan.java</file>
+            <file>file:/C:/Users/PRISMA/Documents/NetBeansProjects/PBO/pertemuan7/src/viewer/viewBuku.java</file>
+            <file>file:/C:/Users/PRISMA/Documents/NetBeansProjects/PBO/pertemuan7/src/META-INF/persistence.xml</file>
         </group>
     </open-files>
 </project-private>

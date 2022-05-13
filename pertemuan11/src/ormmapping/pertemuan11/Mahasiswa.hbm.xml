@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pertemuan11.Mahasiswa" table="mahasiswa" lazy="false">
+		<id name="idmahasiswa" column="idmahasiswa" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<many-to-one name="matakuliahidmatakuliah" cascade="lock" column="Matakuliahidmatakuliah" class="pertemuan11.Matakuliah" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="namamahasiswa" column="namamahasiswa" type="string" length="50" not-null="false" lazy="false"/>
+		<property name="kodeMatakuliah" column="KodeMatakuliah" type="string" length="2" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

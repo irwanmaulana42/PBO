@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 2, 2022 10:29:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.GenapMahasiswa" table="genap_mahasiswa" catalog="genap" optimistic-lock="version">
+        <id name="nim" type="int">
+            <column name="Nim" />
+            <generator class="assigned" />
+        </id>
+        <property name="namaMhs" type="string">
+            <column name="Nama_mhs" length="40" not-null="true" />
+        </property>
+        <property name="tanggalLahir" type="date">
+            <column name="Tanggal_lahir" length="10" not-null="true" />
+        </property>
+        <property name="mataKuliah" type="string">
+            <column name="Mata_kuliah" length="40" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
